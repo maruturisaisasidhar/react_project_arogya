@@ -1,0 +1,147 @@
+/* .App {
+  text-align: center;
+}
+
+.navbar {
+  background-color: #4caf50;
+  padding: 1rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+}
+
+.navbar li {
+  margin: 0 15px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.home,
+.services,
+.about,
+.profile {
+  padding: 2rem;
+}
+
+.footer {
+  background-color: #4caf50;
+  padding: 1rem;
+  color: white;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+.services,
+.about {
+  padding: 2rem;
+  text-align: left;
+}
+
+.services ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.services ul li {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.about p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+} */
+
+.App {
+  text-align: center;
+}
+
+.navbar {
+  background-color: #4caf50; /* Green background */
+  padding: 1rem; /* Padding for spacing */
+  color: white; /* Text color */
+  display: flex; /* Flexbox layout */
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Center items vertically */
+  flex-wrap: wrap; /* Allow items to wrap */
+  max-width: 1200px; /* Max width for the navbar */
+  margin: 0 auto; /* Center the navbar */
+}
+
+.navbar ul {
+  list-style: none; /* Remove bullet points */
+  display: flex; /* Flex layout for list */
+  flex-wrap: wrap; /* Allow wrapping for the list items */
+}
+
+.navbar li {
+  margin: 0 15px; /* Margin between items */
+}
+
+.navbar a {
+  color: white; /* Link color */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.home,
+.services,
+.about,
+.profile {
+  padding: 2rem 1rem; /* Added horizontal padding */
+  margin-top: 60px; /* Avoid overlap with navbar */
+  margin-bottom: 60px; /* Avoid overlap with footer */
+}
+
+.footer {
+  background-color: #4caf50; /* Green background */
+  padding: 1rem; /* Padding for spacing */
+  color: white; /* Text color */
+  position: fixed; /* Fixed at the bottom */
+  width: 100%; /* Full width */
+  bottom: 0; /* Stick to the bottom */
+  left: 0; /* Align it to the left */
+}
+
+.services,
+.about {
+  padding: 2rem; /* Padding for sections */
+  text-align: left; /* Left align text */
+}
+
+.services ul {
+  list-style: none; /* Remove bullet points */
+  padding-left: 0; /* Remove left padding */
+}
+
+.services ul li {
+  margin: 10px 0; /* Margin between list items */
+  font-size: 1.2rem; /* Font size for list items */
+}
+
+.about p {
+  font-size: 1rem; /* Font size for paragraph */
+  line-height: 1.6; /* Line height for readability */
+  margin-bottom: 1rem; /* Margin below paragraph */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack items on smaller screens */
+    align-items: flex-start; /* Align items to start */
+  }
+
+  .navbar li {
+    margin: 5px 0; /* Adjust margins for smaller items */
+  }
+}

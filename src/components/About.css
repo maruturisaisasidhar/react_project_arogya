@@ -1,0 +1,41 @@
+.about-section {
+  padding: 20px;
+  text-align: center;
+  background-color: #f8f9fa; /* Light background for contrast */
+}
+
+.about-section h1 {
+  color: #007bff; /* Main color */
+}
+
+.about-section p {
+  font-size: 1.2em;
+  margin: 20px 0;
+}
+
+.image-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.image-gallery img {
+  border-radius: 10px;
+  width: 300px; /* Adjust width as needed */
+}
+
+.about-section h2 {
+  color: #0056b3; /* Darker shade for subheadings */
+  margin-top: 30px;
+}
+
+.about-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.about-section ul li {
+  font-size: 1em;
+  margin: 10px 0;
+}
