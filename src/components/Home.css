@@ -1,114 +1,127 @@
-/* Header styling */
-.header {
+/* Remedies Page */
+.remedies {
+  padding: 100px;
+  text-align: center;
+  margin-top: 1500px;
+}
+
+.disease-list {
+  display: grid; /* Use grid for layout */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  ); /* Responsive columns */
+  gap: 20px; /* Space between the items */
+}
+
+.tit {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: #f8f9fa;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+  animation: fadeInUp 4 s ease-out; /* Apply animation */
+  overflow: hidden;
 }
 
-.logo-img {
-  height: 60px;
-  width: 60px;
-  border-radius: 50px;
-}
-
-.nav {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-}
-
-/* Dropdown styling */
-.dropdown {
+.tit-img {
+  width: 300px;
+  height: 300px;
   position: relative;
-}
-
-.dropdown-button {
-  background-color: #3498db;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.dropdown-content {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  z-index: 10;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.dropdown-item a {
-  display: block;
-  padding: 8px 16px;
-  text-decoration: none;
-  color: #3498db;
-}
-
-.dropdown-item a:hover {
-  background-color: #f1f1f1;
-}
-
-/* Home Section */
-.home-section {
-  display: flex;
-  justify-content: space-between; /* Align items side by side */
-  gap: 20px; /* Space between cards */
-}
-
-.service-card,
-.instruction-card {
-  flex: 1;
-  margin: 10px;
-  text-align: center;
-  padding: 20px;
-  border: 2px solid #3498db;
+  top: 0px;
   border-radius: 10px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+
+.tit-h1 {
+  position: relative;
+  top: 20px;
+}
+
+.disease-item {
+  position: relative;
+  height: 300px; /* Fixed height for all items for uniformity */
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  overflow: hidden;
   transition: transform 0.3s;
+  display: flex; /* Flexbox for centering content */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
 }
 
-.service-card:hover,
-.instruction-card:hover {
-  transform: scale(1.02);
-  border-color: #2980b9;
+.disease-item:hover {
+  transform: scale(1.05);
 }
 
-.service-card h2,
-.instruction-card h2 {
-  color: #3498db;
+.disease-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  padding: 20px; /* Added padding for space around text */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left; /* Center the text for better appearance */
 }
 
-.service-card p,
-.instruction-card p {
-  color: #666;
+.disease-item:hover .disease-overlay {
+  opacity: 1;
 }
 
-/* Footer styling */
-.footer {
-  padding: 20px;
-  background-color: #f8f9fa;
-  text-align: center;
-  border-top: 1px solid #e9ecef;
+.disease-overlay h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-.footer ul {
-  list-style: none;
-  padding: 0;
+.disease-overlay p {
+  font-size: 16px;
+  margin-bottom: 5px;
 }
 
-.footer ul li {
-  display: inline;
-  margin: 0 10px;
-  font-size: 14px;
+/* Media Queries for further adjustments */
+@media (max-width: 768px) {
+  .remedies {
+    padding: 20px; /* Reduced padding for tablets */
+  }
+
+  .disease-overlay h3 {
+    font-size: 20px; /* Smaller subheading on tablets */
+  }
+
+  .disease-overlay p {
+    font-size: 14px; /* Smaller text on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .remedies {
+    padding: 10px; /* Reduced padding for mobile */
+  }
+
+  .disease-overlay h3 {
+    font-size: 18px; /* Smaller subheading on mobile */
+  }
+
+  .disease-overlay p {
+    font-size: 12px; /* Smaller text on mobile */
+  }
+}
+
+/* Keyframes for animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly below */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End in the original position */
+  }
 }

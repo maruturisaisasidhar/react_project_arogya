@@ -5,7 +5,8 @@ body {
   align-items: center;
   height: 100vh; /* Full viewport height */
   margin: 0; /* Remove default margin */
-  background-color: #f8f9fa; /* Light background color for contrast */
+  background-color: #f8f9fa;
+  margin-top: 1000px;
 }
 
 .logo img {
@@ -25,7 +26,7 @@ body {
 .profile-icon {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-top: 60px;
 }
 
 .icon-img {
@@ -33,15 +34,15 @@ body {
 }
 
 .uploaded-img {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
 }
 
 .upload-container {
   text-align: center;
-  margin-bottom: 20px;
+  margin-top: 40px;
 }
 
 .upload-label {
@@ -52,11 +53,14 @@ body {
   border-radius: 4px;
   cursor: pointer;
 }
-
+.user {
+  text-align: center;
+  font-size: 16pt;
+  font-weight: bold;
+}
 .file-input {
   display: none;
 }
-
 .profile-details {
   margin-bottom: 20px;
 }

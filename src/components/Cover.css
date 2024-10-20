@@ -9,7 +9,7 @@
 .hero {
   position: relative;
   height: 600px;
-  margin-top: 2000px;
+  margin-top: 1500px;
 }
 
 .hero-bg {
@@ -47,6 +47,7 @@
   font-size: 48px;
   margin-bottom: 10px;
   animation: fadeInOut 3s ease-in-out infinite;
+  color: white;
 }
 
 .hero-text p {

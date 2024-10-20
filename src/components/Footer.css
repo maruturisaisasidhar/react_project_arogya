@@ -1,0 +1,97 @@
+/* Footer */
+footer {
+    background-color: #232f3e; /* Background color */
+    color: white; /* Text color */
+    padding: 40px 0; /* Padding around the content */
+    font-size: 14px; /* Font size */
+    width: 100%; /* Full width of the screen */
+    box-sizing: border-box; /* Include padding in total width */
+    position: relative; /* Positioning adjustment if needed */
+    left: 0; /* Align with left edge */
+    right: 0; /* Align with right edge */
+    margin: 0; /* Ensure no margin affects width */
+  }
+  
+  .footer-links {
+    display: flex; /* Flexbox layout for columns */
+    justify-content: space-between; /* Space out the columns */
+    padding: 0 20px; /* Padding on left and right */
+    max-width: 1200px; /* Max width for the content */
+    margin: 0 auto; /* Center the content horizontally */
+    width: 100%; /* Ensure full width for the links */
+  }
+  
+  .footer-column {
+    flex: 1; /* Allow columns to take equal space */
+    margin: 0 15px; /* Margin between columns */
+  }
+  
+  .footer-column h4 {
+    margin-bottom: 15px; /* Space below the headings */
+    color: #ff9900; /* Orange color for headings */
+    font-size: 16px; /* Font size for headings */
+    font-weight: bold; /* Bold headings */
+  }
+  
+  .footer-column ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+  }
+  
+  .footer-column ul li {
+    margin-bottom: 10px; /* Space between list items */
+  }
+  
+  .footer-column ul li a {
+    text-decoration: none; /* No underline */
+    color: white; /* Link color */
+    transition: color 0.2s ease-in; /* Smooth color change */
+  }
+  
+  .footer-column ul li a:hover {
+    color: #007bff; /* Hover color for links */
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid #3a4553; /* Top border */
+    padding-top: 20px; /* Padding above the text */
+    text-align: center; /* Center text */
+    margin: 20px auto 0; /* Center and add margin at the top */
+    width: 100%; /* Full width of the footer */
+  }
+  
+  .footer-bottom p {
+    margin: 0; /* No margin for paragraph */
+    color: white; /* Text color */
+    font-size: 14px; /* Font size */
+  }
+  
+  .footer-bottom ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+    margin: 10px 0; /* Margin around the links */
+    display: flex; /* Flexbox layout for bottom links */
+    justify-content: center; /* Center the links */
+  }
+  
+  .footer-bottom ul li {
+    margin: 0 15px; /* Space between bottom links */
+  }
+  
+  .footer-bottom ul li a {
+    color: white; /* Link color */
+    text-decoration: none; /* No underline */
+    font-size: 14px; /* Font size for links */
+    transition: color 0.2s ease-in; /* Smooth color change */
+  }
+  
+  .footer-bottom ul li a:hover {
+    color: #007bff; /* Hover color for bottom links */
+  }
+  
+  /* New Styles to Ensure Full Width */
+  footer > div {
+    max-width: 1200px; /* Set a max width for the content */
+    margin: 0 auto; /* Center the content */
+  }
+  

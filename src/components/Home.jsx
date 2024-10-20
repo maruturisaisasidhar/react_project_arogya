@@ -1,159 +1,193 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Home.css"; // Import the CSS file
+import React from "react";
+import "./Home.css";
+import "./Footer.css";
+import cold from "../assets/cold1.jpg";
+import cough from "../assets/cough.jpg";
+import diarrhea from "../assets/Diarrhea.jpg";
+import fatigue from "../assets/fatigue.jpeg.jpg";
+import fever from "../assets/fever1.jpg";
+import headache from "../assets/Headache.jpg";
+import indigestion from "../assets/indigestion.jpg";
+import nausea from "../assets/nausea.jpg";
+import sore from "../assets/sore.png";
+import allergy from "../assets/allergy.png";
+import aarogyalogo from "../assets/arogya.jpg";
+const diseases = [
+  {
+    name: "Cold",
+    image: cold,
+    remedy: "Drink warm fluids, rest, and take vitamin C.",
+    medicine: "Paracetamol or Ibuprofen",
+  },
+  {
+    name: "Headache",
+    image: headache,
+    remedy: "Massage temples, drink plenty of water.",
+    medicine: "Ibuprofen or Aspirin",
+  },
+  {
+    name: "Cough",
+    image: cough,
+    remedy: "Honey and ginger tea, stay hydrated.",
+    medicine: "Cough syrup",
+  },
+  {
+    name: "Fever",
+    image: fever,
+    remedy: "Stay hydrated, rest, and take a lukewarm bath.",
+    medicine: "Paracetamol or Ibuprofen",
+  },
+  {
+    name: "Sore Throat",
+    image: sore,
+    remedy: "Gargle with warm salt water, stay hydrated.",
+    medicine: "Throat lozenges",
+  },
+  {
+    name: "Nausea",
+    image: nausea,
+    remedy: "Ginger tea or crackers can help settle the stomach.",
+    medicine: "Antacids or prescribed medication",
+  },
+  {
+    name: "Diarrhea",
+    image: diarrhea,
+    remedy: "Stay hydrated and eat bland foods.",
+    medicine: "Loperamide or probiotics",
+  },
+  {
+    name: "Allergies",
+    image: allergy,
+    remedy: "Avoid allergens, use saline nasal spray.",
+    medicine: "Antihistamines",
+  },
+  {
+    name: "Fatigue",
+    image: fatigue,
+    remedy: "Get enough sleep and maintain a balanced diet.",
+    medicine: "Multivitamins",
+  },
+  {
+    name: "Indigestion",
+    image: indigestion,
+    remedy: "Eat smaller meals and avoid fatty foods.",
+    medicine: "Antacids or digestive aids",
+  },
+];
 
-const Home = () => {
-  const navigate = useNavigate();
-
-  const handleLoginClick = () => {
-    navigate("/login");
-  };
-
-  const handleProfileClick = () => {
-    navigate("/profile");
-  };
-
+function Home() {
   return (
-    <div className="Home">
-      {/* Header */}
-      <div className="header">
-        <nav className="nav">
-          <Dropdown title="Conditions" items={conditions} />
-          <Dropdown title="Drugs & Supplements" items={drugsSupplements} />
-          <Dropdown title="Well-Being" items={wellBeing} />
-        </nav>
-      </div>
-
-      {/* Main Content */}
-      <div className="content-wrapper">
-        <main className="main-content">
-          <h1>Welcome to Aarogya Selfcare and Diagnosis</h1>
-
-          {/* Services Section */}
-          <section className="home-section">
-            <div className="service-card">
-              <h2>Our Services</h2>
-              <ul>
-                <li>Comprehensive Health Assessments</li>
-                <li>Online Consultations with Experts</li>
-                <li>Personalized Health Plans</li>
-                <li>Wellness Programs</li>
-                <li>Medication Management</li>
-                <li>Symptom Checker Tool</li>
-              </ul>
+    <div>
+      <section className="remedies">
+        <div class="tit">
+          <img src={aarogyalogo} alt="Welcome to Aarogya" class="tit-img"></img>
+          <div class="tit-h1">
+            <h1>
+              Welcome To Aarogya
+              <br />
+            </h1>
+            <h4>
+              Explore self-care tips and diagnosis based on your symptoms.
+            </h4>
+          </div>
+        </div>
+        <h1>Common Diseases and Natural Remedies</h1>
+        <div className="disease-list">
+          {diseases.map((disease, index) => (
+            <div
+              className="disease-item"
+              key={index}
+              style={{ backgroundImage: `url(${disease.image})` }}
+            >
+              <div className="disease-overlay">
+                <h3>{disease.name}</h3>
+                <p>Remedy: {disease.remedy}</p>
+                <p>Medicine: {disease.medicine}</p>
+              </div>
             </div>
-
-            {/* Instructions Section */}
-            <div className="instruction-card">
-              <h2>Instructions</h2>
-              <ul>
-                <li>Visit our homepage for services overview.</li>
-                <li>Sign up for an account to access personalized features.</li>
-                <li>Use the symptom checker for initial assessments.</li>
-                <li>Schedule online consultations with our experts.</li>
-                <li>Follow health plans provided by our specialists.</li>
-                <li>Contact support for any queries or assistance.</li>
-              </ul>
-            </div>
-          </section>
-        </main>
-      </div>
-
-      {/* Footer */}
-      <footer className="footer">
-        <ul>
-          <li>About Us</li>
-          <li>Contact</li>
-          <li>Privacy Policy</li>
-        </ul>
+          ))}
+        </div>
+      </section>
+      <footer>
+        <div className="footer-links">
+          {" "}
+          {/* Changed class to className */}
+          <div className="footer-column">
+            <h4>Get to Know Us</h4>
+            <ul>
+              <li>
+                <a href="./about">About Us</a>
+              </li>
+              <li>
+                <a href="#">Careers</a>
+              </li>
+              <li>
+                <a href="#">Press Releases</a>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-column">
+            <h4>Connect with Us</h4>
+            <ul>
+              <li>
+                <a href="#">Facebook</a>
+              </li>
+              <li>
+                <a href="#">Twitter</a>
+              </li>
+              <li>
+                <a href="#">Instagram</a>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-column">
+            <h4>Let Us Help You</h4>
+            <ul>
+              <li>
+                <a href="./profile">Your Account</a>
+              </li>
+              <li>
+                <a href="./services">Customer Service</a>
+              </li>
+              <li>
+                <a href="#">Returns & Refunds</a>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-column">
+            <h4>Make Money with Us</h4>
+            <ul>
+              <li>
+                <a href="#">Sell on Arogya</a>
+              </li>
+              <li>
+                <a href="#">Advertise</a>
+              </li>
+              <li>
+                <a href="#">Affiliate Program</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          {" "}
+          {/* Changed class to className */}
+          <p>&copy; 2024 Arogya: Self Care & Diagnosis. All Rights Reserved.</p>
+          <ul>
+            <li>
+              <a href="#">Terms of Service</a>
+            </li>
+            <li>
+              <a href="#">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="#">Cookie Policy</a>
+            </li>
+          </ul>
+        </div>
       </footer>
     </div>
   );
-};
-
-// Dropdown Component with click functionality
-const Dropdown = ({ title, items }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  return (
-    <div className="dropdown">
-      <button className="dropdown-button" onClick={toggleDropdown}>
-        {title}
-      </button>
-      {isOpen && (
-        <div className="dropdown-content">
-          <div className="dropdown-items-container">
-            {items.map((item, index) => (
-              <div key={index} className="dropdown-item">
-                <a href={"#${item}"}>{item}</a>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-// Data for Dropdowns
-const conditions = [
-  "ADD/ADHD",
-  "Allergies",
-  "Arthritis",
-  "Atrial fibrillation",
-  "Breast Cancer",
-  "Cancer",
-  "Crohn's Disease",
-  "Depression",
-  "Diabetes",
-  "DVT",
-  "Eczema",
-  "Eye Health",
-  "Heart Disease",
-  "HIV & AIDS",
-  "Lung Disease",
-  "Lupus",
-  "Mental Health",
-  "Multiple Sclerosis",
-  "Migraine",
-  "Pain Management",
-  "Psoriasis",
-  "Psoriatic Arthritis",
-  "Rheumatoid Arthritis",
-  "Sexual Conditions",
-  "Skin Problems",
-  "Sleep Disorders",
-  "Ulcerative Colitis",
-];
-
-const drugsSupplements = [
-  "Drugs",
-  "Supplements",
-  "Pill Identifier",
-  "Interaction Checker",
-];
-
-const wellBeing = [
-  "Aging Well",
-  "Baby",
-  "Birth Control",
-  "Children's Health",
-  "Diet & Weight Management",
-  "Fitness & Exercise",
-  "Food & Recipes",
-  "Health & Balance",
-  "Healthy Beauty",
-  "Men's Health",
-  "Parenting",
-  "Pet Health",
-  "Pregnancy",
-  "Sex & Relationships",
-  "Teen Health",
-  "Women's Health",
-];
+}
 
 export default Home;

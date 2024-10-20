@@ -1,7 +1,6 @@
 /* Navbar.css */
-
 .navbar {
-  background-color: white; /* Green background */
+  background-color: white;
   padding: 1rem;
   height: 50px;
   color: black;
@@ -9,25 +8,45 @@
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 4px 2px -2px gray;
-  width: 100%; /* Make the navbar span the entire width */
-  position: fixed; /* Fix the navbar at the top */
-  top: 0; /* Stick to the top */
-  left: 0; /* Align it to the left */
-  z-index: 100; /* Ensure it stays on top of other elements */
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
 }
 
 .logo-image {
   height: 60px;
   width: 60px;
-  border-radius: 50px;
-  border-radius: 50px;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+
+.profile-icon-img {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  margin-left: 20px;
 }
 
 .login {
   position: fixed;
-  top: 20px;
-  right: 8px;
+  top: 22px;
+  right: 60pt;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ece4e4;
+  cursor: pointer;
+  font-weight: bold;
 }
+
 .in1 {
   position: fixed;
   top: 25px;
@@ -39,31 +58,24 @@
   top: 25px;
   right: 183pt;
 }
+
 .in3 {
   position: fixed;
   top: 25px;
   right: 140pt;
 }
+
 .in4 {
   position: fixed;
-  top: 15px;
-  right: 85pt;
-}
-
-.navbar h1 {
-  font-size: 1.5rem;
-  margin: 0;
+  top: 13px;
+  right: 15px;
 }
 
 .navbar ul {
   list-style: none;
   display: flex;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar li {
-  margin-left: 20px;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .navbar a {
@@ -74,14 +86,22 @@
 }
 
 .navbar a:hover {
-  color: #ffd700;
+  color: rgb(124, 20, 220);
 }
+
 .login:hover {
-  background-color: #ffd700;
+  background-color: rgb(210, 182, 236);
+  color: black;
 }
+
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
+    height: auto;
+  }
+
+  .navbar h1 {
+    margin: 10px 0;
   }
 
   .navbar ul {
@@ -91,5 +111,13 @@
 
   .navbar li {
     margin: 10px 0;
+  }
+
+  .in1,
+  .in2,
+  .in3,
+  .in4,
+  .login {
+    position: static;
   }
 }

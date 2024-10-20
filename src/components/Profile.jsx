@@ -30,7 +30,7 @@ const Profile = () => {
         {profileImage ? (
           <img src={profileImage} alt="Profile" className="uploaded-img" />
         ) : (
-          <i className="fas fa-user-circle fa-8x profile-icon" />
+          <i className="fas fa-user-circle fa-9x profile-icon" />
         )}
       </div>
 
@@ -52,7 +52,6 @@ const Profile = () => {
 
       {/* Editable Fields */}
       <div className="profile-details">
-        <label>Username:</label>
         {editing ? (
           <input
             type="text"
@@ -61,9 +60,8 @@ const Profile = () => {
             className="input-field"
           />
         ) : (
-          <p>{username}</p>
+          <p class="user">{username}</p>
         )}
-
         <label>Email:</label>
         {editing ? (
           <input

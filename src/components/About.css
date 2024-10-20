@@ -1,7 +1,8 @@
 .about-section {
   padding: 20px;
   text-align: center;
-  background-color: #f8f9fa; /* Light background for contrast */
+  background-color: #f8f9fa;
+  margin-top: 500px; /* Light background for contrast */
 }
 
 .about-section h1 {
@@ -23,6 +24,7 @@
 .image-gallery img {
   border-radius: 10px;
   width: 300px; /* Adjust width as needed */
+  object-fit: cover;
 }
 
 .about-section h2 {

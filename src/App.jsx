@@ -1,26 +1,36 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
 import Services from "./components/Services";
 import About from "./components/About";
 import Profile from "./components/Profile";
 import Cover from "./components/Cover";
-import Remedies from "./components/Remedies";
+import Home from "./components/Home";
 import LoginForm from "./components/LoginForm";
+import Chatbot from "./components/Chatbot";
+import CreateAccount from "./components/CreateAccount";
+import ChatbotIcon from "./components/ChatbotIcon"; // Import ChatbotIcon
+
 function App() {
   return (
     <Router>
       <div className="App">
         <Navbar />
+
+        {/* Ensure ChatbotIcon appears on every page */}
+        <ChatbotIcon />
+
         <Routes>
           <Route path="/" element={<Cover />} />
-          <Route path="/Home" element={<Home />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/chatbot" element={<Chatbot />} />
           <Route path="/about" element={<About />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/remedies" element={<Remedies />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/create-account" element={<CreateAccount />} />
+          <Route path="/chatbot" element={<Chatbot />} />
         </Routes>
       </div>
     </Router>
