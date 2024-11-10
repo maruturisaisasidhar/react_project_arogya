@@ -1,73 +1,53 @@
-.chatbot-container {
-  position: fixed;
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Adjust position */
-  width: 800px; /* Increased width for better visibility */
-  height: 500px;
-  background-color: #f9f9f9; /* Light background color */
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
-  z-index: 1000; /* Ensure it's above other elements */
+/* Chatbot.css */
+
+.chatbot {
+  display: flex;
+  flex-direction: column;
+  width: 800px; /* Set the width of the chatbot */
+  border: 1px solid #ccc; /* Light border around the chatbot */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  overflow: hidden; /* Prevents overflow of messages */
 }
 
 .chat-window {
-  height: calc(100% - 80px);
-  overflow-y: auto;
+  flex: 1; /* Allows the chat window to grow */
   padding: 10px;
-  background-color: #ffffff; /* White background for messages */
-  border-radius: 10px 10px 0 0; /* Rounded top corners */
-}
-
-.messages {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  background-color: #f9f9f9; /* Light background color */
+  overflow-y: auto; /* Scrollable if content overflows */
 }
 
 .message {
-  padding: 10px; /* Added padding for comfort */
-  border-radius: 8px; /* Slightly increased border radius */
-  max-width: 80%;
+  margin-bottom: 10px; /* Space between messages */
+  padding: 8px;
+  border-radius: 5px; /* Rounded message bubbles */
 }
 
 .message.user {
   background-color: #d1e7dd; /* Light green for user messages */
-  align-self: flex-end;
+  align-self: flex-end; /* Align user messages to the right */
 }
 
 .message.bot {
   background-color: #f8d7da; /* Light red for bot messages */
-  align-self: flex-start;
 }
 
-.input-area {
-  display: flex;
+input[type="text"] {
   padding: 10px;
-  border-top: 1px solid #ccc;
-  background-color: #f1f1f1; /* Light gray for input area */
-  border-radius: 0 0 10px 10px; /* Rounded bottom corners */
-  height: 60px;
+  border: none; /* Remove default border */
+  border-top: 1px solid #ccc; /* Top border for separation */
+  width: calc(100% - 100px); /* Full width minus button width */
 }
 
-.input-area input {
-  flex: 1;
-  padding: 10px; /* Increased padding for input field */
-  border: 1px solid #ccc;
-  border-radius: 5px;
+button {
+  padding: 10px;
+  background-color: #007bff; /* Primary color for button */
+  color: white; /* White text color */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners for button */
+  cursor: pointer; /* Pointer cursor on hover */
 }
 
-.input-area button {
-  margin-left: 10px;
-  padding: 10px 14px; /* Increased padding for button */
-  background-color: #6200ea; /* Main button color */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.input-area button:hover {
-  background-color: #3700b3; /* Darker shade on hover */
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
 }

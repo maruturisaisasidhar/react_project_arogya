@@ -1,84 +1,59 @@
+// LoginForm.jsx
 import React, { useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import "./LoginForm.css"; // Link to the CSS file you provided
+import { Link } from "react-router-dom"; // Import Link for navigation
 
-const LoginPage = () => {
-  const [email, setEmail] = useState("");
+const LoginForm = () => {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); // Use useNavigate
 
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Perform login logic here (e.g., authentication, API calls)
-    console.log("Email:", email);
-    console.log("Password:", password);
-
-    // Redirect to the chatbot page
-    navigate("/chatbot"); // Redirect to the chatbot page
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        {
+          username,
+          password,
+        }
+      );
+      console.log("API Response:", response); // Log the entire response
+      localStorage.setItem("token", response.data.token); // Store token in local storage
+      navigate("/home"); // Redirect to home page
+    } catch (error) {
+      console.error("Error during login:", error); // Log the error for debugging
+      alert(error.response ? error.response.data.message : "An error occurred"); // Show error message to user
+    }
   };
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <h2 className="login-title">Welcome to Arogya!</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="input-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              required
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
-              required
-            />
-          </div>
-          <div className="actions">
-            <div className="remember-me">
-              <input type="checkbox" id="remember" name="remember" />
-              <label htmlFor="remember">Remember me</label>
-            </div>
-            <a href="/" className="forgot-password">
-              Forgot password?
-            </a>
-          </div>
-          <button type="submit" className="login-button">
-            Log In
-          </button>
-        </form>
-        <div className="signup-section">
-          <p>
-            New on our platform?{" "}
-            <a href="#" onClick={() => navigate("/create-account")}>
-              Create an account
-            </a>
-          </p>
-        </div>
-        <div className="social-login">
-          <p>or</p>
-          <div className="social-icons">
-            <i className="fab fa-facebook"></i>
-            <i className="fab fa-twitter"></i>
-            <i className="fab fa-github"></i>
-            <i className="fab fa-google"></i>
-          </div>
-        </div>
-      </div>
+    <div>
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit">Login</button>
+      </form>
+      <p>
+        Don't have an account? <Link to="/CreateAccount">Sign up</Link>{" "}
+        {/* Use Link instead of a */}
+      </p>
     </div>
   );
 };
 
-export default LoginPage;
+export default LoginForm;

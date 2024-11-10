@@ -29,7 +29,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<LoginForm />} />
-          <Route path="/create-account" element={<CreateAccount />} />
+          <Route path="/CreateAccount" element={<CreateAccount />} />
           <Route path="/chatbot" element={<Chatbot />} />
         </Routes>
       </div>

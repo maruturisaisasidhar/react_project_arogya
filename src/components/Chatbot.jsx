@@ -1,66 +1,85 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./Chatbot.css";
 
 const Chatbot = () => {
-  const [messages, setMessages] = useState([
-    { text: "Hi! How can I assist you today?", sender: "bot" },
-  ]);
-  const [input, setInput] = useState("");
+  const [userInput, setUserInput] = useState("");
+  const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const handleInputChange = (event) => {
+    setUserInput(event.target.value);
+  };
 
   const handleSendMessage = async () => {
-    if (input.trim() !== "") {
-      const userMessage = { text: input, sender: "user" };
-      setMessages([...messages, userMessage]);
-      setInput("");
+    if (!userInput) return;
 
-      // Call the chatbot API
-      try {
-        const response = await fetch("https://api.example.com/chatbot", {
-          method: "POST",
+    const userMessage = { text: userInput, sender: "user" };
+    setMessages((prevMessages) => [...prevMessages, userMessage]);
+    setUserInput("");
+    setLoading(true);
+
+    try {
+      const response = await axios.post(
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyD3iE5e9YEjl7fF17xvKMsizCepkPOEewY",
+        {
+          contents: [
+            {
+              parts: [{ text: userInput }],
+            },
+          ],
+        },
+        {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer YOUR_API_KEY", // Replace YOUR_API_KEY with your actual key
           },
-          body: JSON.stringify({ message: input }),
-        });
+        }
+      );
 
-        const data = await response.json();
+      console.log("API Response:", response.data);
+
+      // Check if there are candidates in the response
+      if (response.data.candidates && response.data.candidates.length > 0) {
         const botMessage = {
-          text: data.reply || "Sorry, I can't respond to that yet.",
+          text: response.data.candidates[0].content.parts[0].text, // Adjusted to access the correct path
           sender: "bot",
         };
         setMessages((prevMessages) => [...prevMessages, botMessage]);
-      } catch (error) {
-        const errorMessage = {
-          text: "Something went wrong. Please try again later.",
-          sender: "bot",
-        };
-        setMessages((prevMessages) => [...prevMessages, errorMessage]);
-        console.error("Error:", error);
+      } else {
+        throw new Error("No content received from API.");
       }
+    } catch (error) {
+      console.error(
+        "Error fetching data from API",
+        error.response ? error.response.data : error.message
+      );
+      const errorMessage = {
+        text: "Sorry, something went wrong. Please try again.",
+        sender: "bot",
+      };
+      setMessages((prevMessages) => [...prevMessages, errorMessage]);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="chatbot-container">
+    <div className="chatbot">
       <div className="chat-window">
-        <div className="messages">
-          {messages.map((message, index) => (
-            <div key={index} className={`message ${message.sender}`}>
-              {message.text}
-            </div>
-          ))}
-        </div>
+        {messages.map((message, index) => (
+          <div key={index} className={`message ${message.sender}`}>
+            {message.text}
+          </div>
+        ))}
+        {loading && <div className="message bot">Thinking...</div>}
       </div>
-      <div className="input-area">
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Type your message..."
-        />
-        <button onClick={handleSendMessage}>Send</button>
-      </div>
+      <input
+        type="text"
+        value={userInput}
+        onChange={handleInputChange}
+        placeholder="Type a message..."
+      />
+      <button onClick={handleSendMessage}>Send</button>
     </div>
   );
 };

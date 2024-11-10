@@ -1,68 +1,56 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './CreateAccount.css';  // You'll need to create a CSS file for the sign-up page or reuse the login styles
+// CreateAccount.jsx
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom"; // Import useNavigate and Link
 
 const CreateAccount = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate(); // Use useNavigate
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // You can add validation logic here
-        if (password === confirmPassword) {
-            console.log('Account created with email:', email);
-            // Redirect back to login or chatbot after successful signup
-            navigate('/login'); // You can also redirect to /chatbot after successful signup
-        } else {
-            alert('Passwords do not match');
-        }
-    };
+  const handleSignup = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    try {
+      // Make a POST request to the signup endpoint
+      await axios.post("http://localhost:5000/api/auth/signup", {
+        username,
+        password,
+      });
+      navigate("/"); // Redirect to login page after signup success
+    } catch (error) {
+      console.error(
+        error.response ? error.response.data.message : error.message
+      );
+      alert(error.response ? error.response.data.message : "An error occurred"); // Show error message to user
+    }
+  };
 
-    return (
-        <div className="sign-up-container">
-            <div className="sign-up-card">
-                <h2 className="sign-up-title">Create an Account</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="input-group">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Enter your email"
-                            required
-                        />
-                    </div>
-                    <div className="input-group">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Enter your password"
-                            required
-                        />
-                    </div>
-                    <div className="input-group">
-                        <label htmlFor="confirmPassword">Confirm Password</label>
-                        <input
-                            type="password"
-                            id="confirmPassword"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            placeholder="Confirm your password"
-                            required
-                        />
-                    </div>
-                    <button type="submit" className="sign-up-button">Sign Up</button>
-                </form>
-            </div>
-        </div>
-    );
+  return (
+    <div>
+      <h2>Create Account</h2>
+      <form onSubmit={handleSignup}>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit">Sign Up</button>
+      </form>
+      <p>
+        Already have an account? <Link to="/">Login</Link>{" "}
+        {/* Use Link here too */}
+      </p>
+    </div>
+  );
 };
 
 export default CreateAccount;
